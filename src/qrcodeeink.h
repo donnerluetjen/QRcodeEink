@@ -9,8 +9,11 @@
 
 #include <qrcodedisplay.h>
 #include <Adafruit_GFX.h>   
-#include <GxEPD.h>
-#include <GxGDE0213B72B/GxGDE0213B72B.h>
+#include <GxEPD2.h>
+#include <GxEPD2_BW.h>
+#include <GxEPD2_3C.h>
+#include <epd3c/GxEPD2_290_C90c.h>
+#include "display_definition.h"
 
 #ifndef EINK_MODEL
 #define EINK_MODEL 128
@@ -19,11 +22,11 @@
 class QRcodeEink : public QRcodeDisplay
 {
 	private:
-		GxGDE0213B72B *display;
+		Display_Model *display;
         void drawPixel(int x, int y, int color);
 	public:
 		
-		QRcodeEink(GxGDE0213B72B *display);
+		QRcodeEink(Display_Model *display);
 		void init();
 		void screenwhite();
 		void screenupdate();

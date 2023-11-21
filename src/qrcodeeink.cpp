@@ -1,9 +1,10 @@
 #include <Arduino.h>
 #include "qrencode.h"
 #include "qrcodeeink.h"
+// #include "display_definition.h"
 
 
-QRcodeEink::QRcodeEink(GxGDE0213B72B *display) {
+QRcodeEink::QRcodeEink(Display_Model *display) {
     this->display = display;
 }
 
@@ -11,7 +12,7 @@ void QRcodeEink::init() {
     display->init();
     this->screenwidth = display->width();
     this->screenheight = display->height();
-    display->eraseDisplay();
+    display->clearScreen();
     int min = screenwidth;
     if (screenheight<screenwidth)
         min = screenheight;
@@ -25,7 +26,7 @@ void QRcodeEink::screenwhite() {
 }
 
 void QRcodeEink::screenupdate() {
-    display->update();
+    display->refresh();
 }
 
 void QRcodeEink::drawPixel(int x, int y, int color) {
